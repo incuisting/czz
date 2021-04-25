@@ -1,0 +1,11 @@
+{
+  "name": "jsmodbus-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "crc": "^3.8.0",
+    "jsmodbus": "^4.0.5",
+    "python-struct": "^1.1.3"
+  }
+}
