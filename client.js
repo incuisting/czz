@@ -15,7 +15,10 @@ const MAP = {
   UP_STATUS: 0x0018,
   DOWN_STATUS: 0x0019,
 };
-
+const STATUS_MAP = {
+  "00": "OFF",
+  "01": "ON",
+};
 function control(addr, value = MAP.ON) {
   const msgNotCrc = struct.pack("!BBHH", 0x1, 0x5, addr, value);
   const msgCrc = CRC.crc16modbus(msgNotCrc);
@@ -63,3 +66,13 @@ function query(host, port) {
   const upStatus = connect(host, port, readCoil(MAP.UP_STATUS, 1));
   const downStatus = connect(host, port, readCoil(MAP.DOWN_STATUS, 1));
 }
+
+const buf = Buffer.alloc(6);
+buf.writeUInt16BE(0x0101, 0);
+buf.writeUInt16BE(0x0100, 2);
+buf.writeUInt16BE(0x9048, 4);
+
+const read = buf.readUInt16BE(2);
+const status_code = Buffer.from([read]).toString("hex");
+console.log(buf.toString("hex"));
+console.log(STATUS_MAP[status_code]);
