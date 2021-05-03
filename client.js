@@ -72,7 +72,7 @@ function up(host, port) {
 
   socket.on("error", console.error);
   socket.on("data", function (data) {
-    console.log("up", data);
+    console.log("up", data.toString());
     socket.end();
   });
 
@@ -125,7 +125,7 @@ function query(host, port) {
 // console.log(buf.toString("hex"));
 // console.log(STATUS_MAP[status_code]);
 
-// up("10.10.100.254", 8899);
+up("127.0.0.1", 9999);
 
 // down("10.10.100.254", 8899);
 
@@ -133,6 +133,3 @@ function query(host, port) {
 
 // connect("10.10.100.254", 8899, control(MAP.DOWN, MAP.OFF));
 // connect("10.10.100.254", 8899, control(MAP.DOWN, MAP.ON));
-
-
-
