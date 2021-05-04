@@ -49,9 +49,9 @@ function connect(host, port, command, cb) {
   socket.on("error", console.error);
   socket.on("data", function (data) {
     console.log(command, data);
-    // const read = data.readUInt16BE(2);
-    // const status_code = Buffer.from([read]).toString("hex");
-    // cb(STATUS_MAP[status_code]);
+    const read = data.readUInt16BE(2);
+    const status_code = Buffer.from([read]).toString("hex");
+    cb(STATUS_MAP[status_code]);
     socket.end();
   });
 
@@ -125,11 +125,11 @@ function query(host, port) {
 // console.log(buf.toString("hex"));
 // console.log(STATUS_MAP[status_code]);
 
-up("127.0.0.1", 9999);
+// up("127.0.0.1", 9999);
 
-// down("10.10.100.254", 8899);
+// down("127.0.0.1", 9999);
 
-// query("10.10.100.254", 8899);
+query("127.0.0.1", 9999);
 
 // connect("10.10.100.254", 8899, control(MAP.DOWN, MAP.OFF));
 // connect("10.10.100.254", 8899, control(MAP.DOWN, MAP.ON));
