@@ -73,4 +73,5 @@ function createBean(appId, authorizationTime) {
   };
 }
 const lic = getLic(createBean("demo", 10));
-checkLic(lic);
+fs.writeFileSync(resolve(__dirname,'./license'),lic)
+// checkLic(lic);
