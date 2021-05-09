@@ -60,6 +60,7 @@ function parse32MACTo10(mac32) {
     .split("-")
     .map((el) => {
       const mac10 = parseInt(el, 32) + "";
+      // 第一位添加一个0-9的随机数
       const mac10Str = Math.floor(Math.random() * 10) + mac10.padStart(3, "0");
       return mac10Str;
     })
@@ -92,4 +93,4 @@ async function planB() {
   console.log(mac === mac16);
 }
 
-planB();
+
